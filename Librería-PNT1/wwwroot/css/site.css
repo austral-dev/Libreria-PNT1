@@ -1,0 +1,26 @@
+:root {
+    --brand: #0b3d91;
+}
+
+.navbar-brand {
+    letter-spacing: .5px;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.price {
+    font-weight: 700;
+}
+
+.book-card img {
+    object-fit: cover;
+    height: 220px;
+    width: 100%;
+}
+
+#cart-count {
+    font-size: .75rem;
+    min-width: 1.25rem;
+}

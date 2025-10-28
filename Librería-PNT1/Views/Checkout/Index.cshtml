@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Checkout";
+}
+<h1 class="h4 mb-3">Checkout</h1>
+
+<form class="row g-3" method="post" action="/checkout/confirm" novalidate>
+    <div class="col-md-6">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" required>
+    </div>
+    <div class="col-12">
+        <label class="form-label">Dirección</label>
+        <input class="form-control" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Localidad</label>
+        <input class="form-control" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Provincia</label>
+        <input class="form-control" required>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary">Confirmar pedido</button>
+    </div>
+</form>

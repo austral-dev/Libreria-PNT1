@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Contacto";
+}
+<h1 class="h4 mb-3">Contacto</h1>
+<form class="row g-3" method="post" action="/contact/send" novalidate>
+    <div class="col-md-6">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" required>
+    </div>
+    <div class="col-12">
+        <label class="form-label">Mensaje</label>
+        <textarea class="form-control" rows="5" required></textarea>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-outline-primary">Enviar</button>
+    </div>
+</form>

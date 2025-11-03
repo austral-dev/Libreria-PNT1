@@ -1,31 +1,46 @@
 using Libreria_PNT1.Data;
+using Libreria_PNT1.Repositories;
+using Libreria_PNT1.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// -------------------------
+// Base de datos
+// -------------------------
+
+// Si querés seguir usando SQLite para las pruebas, mantené esta línea:
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Si vas a usar SQL Server (recomendado para integrar con EF Core):
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add services to the container.
+// -------------------------
+// Repositorios (inyección de dependencias)
+// -------------------------
+builder.Services.AddScoped<ILibroRepository, LibroRepository>();
+
+// -------------------------
+// MVC
+// -------------------------
 builder.Services.AddControllersWithViews();
-
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// -------------------------
+// Middleware HTTP
+// -------------------------
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -44,7 +44,7 @@ namespace libreria_PNT1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Libro model)
         {
-            if (id != model.IdLibro) return BadRequest();
+            if (id.ToString() != model.IdLibro) return BadRequest();
             if (!ModelState.IsValid) return View(model);
             await _repo.UpdateAsync(model);
             await _repo.SaveChangesAsync();

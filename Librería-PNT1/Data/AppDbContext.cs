@@ -15,8 +15,8 @@ namespace Libreria_PNT1.Data
 
             // Seed de prueba
             modelBuilder.Entity<LibroEntity>().HasData(
-                new Libro { IdLibro = "1", Titulo = "El Quijote", Autor = "Cervantes", Descripcion = "Clásico", Precio = 19999.99, Stock = 5, Disponible = true},
-                new Libro { IdLibro = "2", Titulo = "Fundación", Autor = "Isaac Asimov", Descripcion = "Sci-Fi", Precio = 15999.00, Stock = 3, Disponible = true}
+                new LibroEntity { IdLibro = 1, Titulo = "El Quijote", Autor = "Cervantes", Descripcion = "Clásico", Precio = 19999, Stock = 5, Disponible = true},
+                new LibroEntity { IdLibro = 2, Titulo = "Fundación", Autor = "Isaac Asimov", Descripcion = "Sci-Fi", Precio = 15999, Stock = 3, Disponible = true}
             );
         }
     }

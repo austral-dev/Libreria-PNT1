@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Librería_PNT1</RootNamespace>
+    <RootNamespace>libreria_PNT1</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

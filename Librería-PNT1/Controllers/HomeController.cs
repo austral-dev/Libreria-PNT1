@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using Librería_PNT1.Models;
+using libreria_PNT1.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Librería_PNT1.Controllers
+namespace libreria_PNT1.Controllers
 {
     public class HomeController : Controller
     {

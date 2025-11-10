@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Librería_PNT1.Models
+namespace libreria_PNT1.Models
 {
     public class Carrito
     {

@@ -1,6 +1,6 @@
 using Libreria_PNT1.Data;
-using Libreria_PNT1.Repositories;
-using Libreria_PNT1.Repositories.Interfaces;
+//using Libreria_PNT1.Repositories;
+//using Libreria_PNT1.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // -------------------------
 // Repositorios (inyección de dependencias)
 // -------------------------
-builder.Services.AddScoped<ILibroRepository, LibroRepository>();
+//builder.Services.AddScoped<ILibroRepository, LibroRepository>();
 
 // -------------------------
 // MVC

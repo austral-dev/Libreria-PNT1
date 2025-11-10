@@ -1,11 +1,11 @@
 ﻿using System;
 
-using Librería_PNT1.Data;
-using Librería_PNT1.Models;
-using Librería_PNT1.Repositories.Interfaces;
+using Libreria_PNT1.Data;
+using Libreria_PNT1.Models;
+using libreria_PNT1.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Librería_PNT1.Repositories
+namespace Libreria_PNT1.Repositories
 {
     public class LibroRepository : ILibroRepository
     {

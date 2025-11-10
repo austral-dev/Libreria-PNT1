@@ -2,7 +2,6 @@
 
 public class HistorialPedido
 {
-    // Atributos
     public DateTime Fecha { get; set; }
     public double PrecioTotal { get; set; }
 
@@ -11,7 +10,6 @@ public class HistorialPedido
 
     // Asociación con Cliente (Cardinalidad 1, gestionada en la clase Cliente/Carrito)
 
-    // Constructor
     public HistorialPedido(DateTime fecha, double precioTotal, List<ItemPedido> items)
     {
         Fecha = fecha;

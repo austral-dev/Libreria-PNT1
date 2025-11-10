@@ -1,15 +1,10 @@
-﻿// 1. Importamos los 'Models' (para poder usar la clase Libro)
-using TuProyecto.Models; 
-
-// 2. Importamos LINQ (para usar métodos como FirstOrDefault, Where, etc.)
+﻿using Libreria_PNT1.Models; 
 using System.Linq;
-
-// 3. Importamos las colecciones (para poder usar List<T>)
 using System.Collections.Generic;
-using System; // (Opcional, pero buena práctica si usas tipos de System)
+using System;
 
-// Asegúrate de cambiar "TuProyecto" por el nombre real de tu proyecto
-namespace TuProyecto.Services
+
+namespace Libreria_PNT1.Services
 {
     public class LibroService
     {
@@ -29,18 +24,14 @@ namespace TuProyecto.Services
 
         private void CargarDatosDePrueba()
         {
-            // Creamos libros usando el constructor que definiste en el Modelo
             var libro1 = new Libro("1", "Cien Años de Soledad", "García Márquez", "Realismo mágico", 30.00, 10, Categoria.NOVELA);
             var libro2 = new Libro("2", "El Aleph", "Jorges Luis Borges", "Colección de cuentos", 22.50, 5, Categoria.CUENTO);
             var libro3 = new Libro("3", "Sapiens", "Yuval Noah Harari", "Historia de la humanidad", 28.75, 15, Categoria.NO_FICCION);
 
-            // Los añadimos a nuestra lista privada
             _libros.Add(libro1);
             _libros.Add(libro2);
             _libros.Add(libro3);
         }
-
-        // --- MÉTODOS PÚBLICOS (los que define tu UML) ---
 
         // Devuelve la lista completa de libros
         public List<Libro> MostrarLibros()
@@ -59,7 +50,7 @@ namespace TuProyecto.Services
         {
             // Usamos LINQ (FirstOrDefault) para encontrar el primer libro
             // que cumpla la condición (l.IdLibro == id).
-            // Si no encuentra nada, devuelve 'null'.
+            // Si no encuentra nada, devuelve 'null'
             return _libros.FirstOrDefault(l => l.IdLibro == id);
         }
 
@@ -107,7 +98,6 @@ namespace TuProyecto.Services
             return _libros.Where(l => l.Precio <= maxPrecio).ToList();
         }
 
-        // (Faltaban en tu UML pero son necesarios)
         public void ModificarLibro(string idLibro, string nuevoTitulo, double nuevoPrecio)
         {
              Libro libro = BuscarLibroPorId(idLibro);
@@ -116,6 +106,15 @@ namespace TuProyecto.Services
                 libro.Titulo = nuevoTitulo;
                 libro.Precio = nuevoPrecio;
              }
+        }
+
+        public void ActualizarPrecios(string idLibro, double nuevoPrecio)
+        {
+            Libro libro = BuscarLibroPorId(idLibro);
+            if (libro != null)
+            {
+                libro.Precio = nuevoPrecio;
+            }
         }
     }
 }

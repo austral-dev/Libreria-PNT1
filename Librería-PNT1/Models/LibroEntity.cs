@@ -31,10 +31,8 @@ namespace Libreria_PNT1.Models
         public int? CategoriaId { get; set; }
         public Categoria? Categoria { get; set; }
 
-        // Constructor vacío requerido por EF
         public LibroEntity() { }
 
-        // Método útil para la app
         public bool EstaEnStock() => Stock > 0;
     }
 }

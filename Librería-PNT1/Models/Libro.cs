@@ -2,7 +2,6 @@
 
 public class Libro
 {
-    // Atributos
     public string IdLibro { get; set; }
     public string Titulo { get; set; }
     public string Autor { get; set; }
@@ -14,7 +13,6 @@ public class Libro
     // Asociación con el enumerado Categoria (Cardinalidad 1)
     public Categoria Categoria { get; set; }
 
-    // Constructor (adaptado de los parámetros visibles en el diagrama)
     public Libro(string idLibro, string titulo, string autor, string descripcion, double precio, int stock, Categoria categoria)
     {
         IdLibro = idLibro;
@@ -24,10 +22,9 @@ public class Libro
         Precio = precio;
         Stock = stock;
         Categoria = categoria;
-        Disponible = (stock > 0); // Inicializar disponible
+        Disponible = (stock > 0);
     }
 
-    // Métodos
     public bool EstaEnStock()
     {
         return Stock > 0;

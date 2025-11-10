@@ -1,7 +1,10 @@
+using Fluent.Infrastructure.FluentModel;
 using Libreria_PNT1.Data;
-using Libreria_PNT1.Repositories;
-using Libreria_PNT1.Repositories.Interfaces;
+using Librería_PNT1.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore.Sqlite;
+using Librería_PNT1.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

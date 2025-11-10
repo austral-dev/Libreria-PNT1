@@ -1,8 +1,8 @@
 ﻿using System;
 
-using libreria_PNT1.Models;
+using Libreria_PNT1.Models;
 
-namespace libreria_PNT1.Repositories.Interfaces
+namespace Libreria_PNT1.Repositories.Interfaces
 {
     public interface ILibroRepository
     {

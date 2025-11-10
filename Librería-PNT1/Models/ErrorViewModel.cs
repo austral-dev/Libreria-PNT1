@@ -1,4 +1,4 @@
-namespace libreria_PNT1.Models
+namespace Libreria_PNT1.Models
 {
     public class ErrorViewModel
     {

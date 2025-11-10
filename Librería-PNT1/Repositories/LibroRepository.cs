@@ -1,6 +1,6 @@
 ﻿using Libreria_PNT1.Data;
 using Libreria_PNT1.Models;
-using Librería_PNT1.Repositories.Interfaces;
+using Libreria_PNT1.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

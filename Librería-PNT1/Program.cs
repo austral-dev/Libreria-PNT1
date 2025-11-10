@@ -1,6 +1,6 @@
 using Libreria_PNT1.Data;
-using Librería_PNT1.Repositories;
-using Librería_PNT1.Repositories.Interfaces;
+using Libreria_PNT1.Repositories;
+using Libreria_PNT1.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

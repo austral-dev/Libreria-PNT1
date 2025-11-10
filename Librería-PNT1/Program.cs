@@ -1,22 +1,11 @@
-using Fluent.Infrastructure.FluentModel;
 using Libreria_PNT1.Data;
+using Librería_PNT1.Repositories;
 using Librería_PNT1.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore.Sqlite;
-using Librería_PNT1.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// -------------------------
-// Base de datos
-// -------------------------
 
-// Si querés seguir usando SQLite para las pruebas, mantené esta línea:
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// Si vas a usar SQL Server (recomendado para integrar con EF Core):
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

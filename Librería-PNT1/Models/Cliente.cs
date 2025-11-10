@@ -1,14 +1,14 @@
-﻿using Libreria_PNT1.Models;
+﻿using libreria_PNT1.Models;
 using System;
 
 
 public class Cliente
 {
-    public string IdCliente { get; set; }
-    public string Nombre { get; set; }
-    public string Apellido { get; set; }
-    public string Email { get; set; }
-    private string Contrasena { get; set; }
+    public string IdCliente { get; set; } = string.Empty;
+    public string Nombre { get; set; } = string.Empty;
+    public string Apellido { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    private string Contrasena { get; set; } = string.Empty;
 
     public void Registrar(string id, string nom, string ape, string mail, string password)
     {

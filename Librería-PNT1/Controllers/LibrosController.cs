@@ -1,7 +1,7 @@
 ﻿using System;
 
 using libreria_PNT1.Models;
-using libreria_PNT1.Repositories.Interfaces;
+using Libreria_PNT1.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace libreria_PNT1.Controllers

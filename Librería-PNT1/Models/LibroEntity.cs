@@ -31,6 +31,8 @@ namespace Libreria_PNT1.Models
         public int? CategoriaId { get; set; }
         public Categoria? Categoria { get; set; }
 
+        
+
         public LibroEntity() { }
 
         public bool EstaEnStock() => Stock > 0;

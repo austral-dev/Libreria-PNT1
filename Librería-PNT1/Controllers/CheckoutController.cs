@@ -69,7 +69,11 @@ namespace Libreria_PNT1.Controllers
             {
                 Nombre = model.Nombre,
                 Email = model.Email,
+                Telefono = model.Telefono,
                 Direccion = model.Direccion,
+                Ciudad = model.Ciudad,
+                CodigoPostal = model.CodigoPostal,
+                
                 // Agregá más campos si tu entidad los tiene
             };
 

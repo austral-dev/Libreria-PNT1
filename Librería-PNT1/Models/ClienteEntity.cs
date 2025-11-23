@@ -17,8 +17,17 @@ namespace Libreria_PNT1.Models
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
 
-        [StringLength(20)]
-        public string? Telefono { get; set; }
+        [Required, StringLength(100)]
+        public string? Telefono { get; set; } = string.Empty;
+
+        [Required, StringLength(100)]
+        public string? Direccion { get; set; } = string.Empty;
+
+        [Required, StringLength(100)]
+        public string Ciudad { get; set; } = string.Empty;
+
+        [Required, StringLength(10)]
+        public string CodigoPostal { get; set; } = string.Empty;
 
     }
 }

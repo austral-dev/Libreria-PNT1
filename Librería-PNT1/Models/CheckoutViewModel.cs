@@ -17,6 +17,10 @@ namespace Libreria_PNT1.Models
         public string Email { get; set; } = string.Empty;
 
         [Required]
+        [Phone]
+        public string Telefono { get; set; } = string.Empty;
+
+        [Required]
         [Display(Name = "Dirección")]
         public string Direccion { get; set; } = string.Empty;
 

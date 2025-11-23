@@ -19,37 +19,55 @@ namespace Libreria_PNT1.Repositories
 
         public async Task<IEnumerable<Libro>> GetAllAsync()
         {
-            var entities = await _context.Libros.AsNoTracking().ToListAsync();
+            var entities = await _context.Libros
+                                         .Include(l => l.Categoria) // para leer el nombre
+                                         .AsNoTracking()
+                                         .ToListAsync();
 
-            return entities.Select(entity => new Libro(
-                entity.IdLibro.ToString(),
-                entity.Titulo,
-                entity.Autor,
-                entity.Descripcion ?? string.Empty,
-                (double)entity.Precio,
-                entity.Stock,
-                entity.Categoria ?? Categoria.NOVELA
-            )
-            { Disponible = entity.Disponible });
+            return entities.Select(entity =>
+            {
+                var libro = new Libro(
+                    entity.IdLibro.ToString(),
+                    entity.Titulo,
+                    entity.Autor,
+                    entity.Descripcion ?? string.Empty,
+                    (double)entity.Precio,
+                    entity.Stock,
+                    Categoria.NOVELA      // usamos un valor por defecto para el enum
+                );
+
+                // Campos que agregaste para FK / UI
+                libro.Disponible = entity.Disponible;
+                libro.CategoriaId = entity.CategoriaId;
+                libro.CategoriaNombre = entity.Categoria?.Nombre;
+
+                return libro;
+            });
         }
 
         public async Task<Libro?> GetByIdAsync(int id)
         {
-            var entity = await _context.Libros.FirstOrDefaultAsync(l => l.IdLibro == id);
+            var entity = await _context.Libros
+                                       .Include(l => l.Categoria)
+                                       .FirstOrDefaultAsync(l => l.IdLibro == id);
+
             if (entity == null) return null;
 
-            return new Libro(
+            var libro = new Libro(
                 entity.IdLibro.ToString(),
                 entity.Titulo,
                 entity.Autor,
                 entity.Descripcion ?? string.Empty,
                 (double)entity.Precio,
                 entity.Stock,
-                entity.Categoria ?? Categoria.NOVELA
-            )
-            {
-                Disponible = entity.Disponible
-            };
+                Categoria.NOVELA
+            );
+
+            libro.Disponible = entity.Disponible;
+            libro.CategoriaId = entity.CategoriaId;
+            libro.CategoriaNombre = entity.Categoria?.Nombre;
+
+            return libro;
         }
 
         public async Task AddAsync(Libro entity)
@@ -63,8 +81,11 @@ namespace Libreria_PNT1.Repositories
                 Precio = (decimal)entity.Precio,
                 Stock = entity.Stock,
                 Disponible = entity.Disponible,
-                Categoria = entity.Categoria
+
+                // ⚠️ Ahora solo trabajamos con FK, no con CategoriaEntity directa
+                CategoriaId = entity.CategoriaId
             };
+
             await _context.Libros.AddAsync(libroEntity);
         }
 
@@ -84,7 +105,7 @@ namespace Libreria_PNT1.Repositories
                 Precio = (decimal)entity.Precio,
                 Stock = entity.Stock,
                 Disponible = entity.Disponible,
-                Categoria = entity.Categoria
+                CategoriaId = entity.CategoriaId
             };
 
             _context.Libros.Update(libroEntity);

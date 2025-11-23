@@ -46,16 +46,12 @@ namespace Libreria_PNT1.Services
         }
 
         // Busca un libro por su ID
-        public Libro BuscarLibroPorId(string id)
+        public Libro? BuscarLibroPorId(string id)
         {
-            // Usamos LINQ (FirstOrDefault) para encontrar el primer libro
-            // que cumpla la condición (l.IdLibro == id).
-            // Si no encuentra nada, devuelve 'null'
             return _libros.FirstOrDefault(l => l.IdLibro == id);
         }
 
-        // Busca un libro por su nombre (o parte del nombre)
-        public Libro BuscarLibroPorNombre(string nombre)
+        public Libro? BuscarLibroPorNombre(string nombre)
         {
             return _libros.FirstOrDefault(l => l.Titulo.Contains(nombre, StringComparison.OrdinalIgnoreCase));
         }
@@ -67,11 +63,13 @@ namespace Libreria_PNT1.Services
             return _libros.Where(l => l.Categoria == categoria).ToList();
         }
 
+     
+
         // Actualiza el stock de un libro
         public void ActualizarStock(string idLibro, int nuevaCantidad)
         {
             // 1. Encontramos el libro
-            Libro libro = BuscarLibroPorId(idLibro);
+            Libro? libro = BuscarLibroPorId(idLibro);   // ahora nullable
 
             // 2. Verificamos si existe antes de intentar modificarlo
             if (libro != null)
@@ -85,12 +83,13 @@ namespace Libreria_PNT1.Services
         // Elimina un libro de la lista
         public void EliminarLibro(string idLibro)
         {
-            Libro libro = BuscarLibroPorId(idLibro);
+            Libro? libro = BuscarLibroPorId(idLibro);   //
             if (libro != null)
             {
                 _libros.Remove(libro);
             }
         }
+
 
         // Filtra libros que cuesten MENOS O IGUAL al precio dado
         public List<Libro> FiltrarPorPrecio(double maxPrecio)
@@ -100,17 +99,17 @@ namespace Libreria_PNT1.Services
 
         public void ModificarLibro(string idLibro, string nuevoTitulo, double nuevoPrecio)
         {
-             Libro libro = BuscarLibroPorId(idLibro);
-             if(libro != null)
-             {
+            Libro? libro = BuscarLibroPorId(idLibro);   //
+            if (libro != null)
+            {
                 libro.Titulo = nuevoTitulo;
                 libro.Precio = nuevoPrecio;
-             }
+            }
         }
 
         public void ActualizarPrecios(string idLibro, double nuevoPrecio)
         {
-            Libro libro = BuscarLibroPorId(idLibro);
+            Libro? libro = BuscarLibroPorId(idLibro);   //
             if (libro != null)
             {
                 libro.Precio = nuevoPrecio;

@@ -20,7 +20,5 @@ namespace Libreria_PNT1.Models
         [StringLength(20)]
         public string? Telefono { get; set; }
 
-        [StringLength(200)]
-        public string? Direccion { get; set; }
     }
 }

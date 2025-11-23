@@ -1,69 +1,82 @@
-﻿using System;
-
-using libreria_PNT1.Models;
-using Libreria_PNT1.Repositories.Interfaces;
+﻿using Libreria_PNT1.Data;
+using Libreria_PNT1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace libreria_PNT1.Controllers
+namespace Libreria_PNT1.Controllers
 {
     public class LibrosController : Controller
     {
-        private readonly ILibroRepository _repo;
+        private readonly AppDbContext _db;
 
-        public LibrosController(ILibroRepository repo)
+        public LibrosController(AppDbContext db)
         {
-            _repo = repo;
+            _db = db;
         }
 
+        // GET: /Libros
         public async Task<IActionResult> Index()
         {
-            var libros = await _repo.GetAllAsync();
-            return View(libros);
+            var libros = await _db.Libros
+                                  .Include(l => l.Categoria)   // si ya agregás CategoriaEntity
+                                  .ToListAsync();
+            return View(libros); // List<LibroEntity>
         }
 
+        // GET: /Libros/Create
         public IActionResult Create() => View();
 
+        // POST: /Libros/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Libro model)
+        public async Task<IActionResult> Create(LibroEntity model)
         {
             if (!ModelState.IsValid) return View(model);
-            await _repo.AddAsync(model);
-            await _repo.SaveChangesAsync();
+            _db.Libros.Add(model);
+            await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: /Libros/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var libro = await _repo.GetByIdAsync(id);
+            var libro = await _db.Libros.FindAsync(id);
             if (libro == null) return NotFound();
             return View(libro);
         }
 
+        // POST: /Libros/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Libro model)
+        public async Task<IActionResult> Edit(int id, LibroEntity model)
         {
-            if (id.ToString() != model.IdLibro) return BadRequest();
+            if (id != model.IdLibro) return BadRequest();
             if (!ModelState.IsValid) return View(model);
-            await _repo.UpdateAsync(model);
-            await _repo.SaveChangesAsync();
+
+            _db.Entry(model).State = EntityState.Modified;
+            await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: /Libros/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
-            var libro = await _repo.GetByIdAsync(id);
+            var libro = await _db.Libros.FindAsync(id);
             if (libro == null) return NotFound();
             return View(libro);
         }
 
+        // POST: /Libros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _repo.DeleteAsync(id);
-            await _repo.SaveChangesAsync();
+            var libro = await _db.Libros.FindAsync(id);
+            if (libro != null)
+            {
+                _db.Libros.Remove(libro);
+                await _db.SaveChangesAsync();
+            }
             return RedirectToAction(nameof(Index));
         }
     }

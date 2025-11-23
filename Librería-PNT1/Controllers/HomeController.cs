@@ -1,21 +1,34 @@
-using System.Diagnostics;
 using libreria_PNT1.Models;
+using Libreria_PNT1.Models;
+using Libreria_PNT1.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace libreria_PNT1.Controllers
+namespace Libreria_PNT1.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ILibroRepository _libroRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ILibroRepository libroRepository)
         {
             _logger = logger;
+            _libroRepository = libroRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            // <-- Mostrar mensaje del Checkout
+            ViewBag.CheckoutMessage = TempData["CheckoutMessage"] as string;
+
+            var novedades = (await _libroRepository.GetAllAsync())
+                                .Take(4)
+                                .ToList();
+
+            return View(novedades);
         }
 
         public IActionResult Privacy()
@@ -26,7 +39,10 @@ namespace libreria_PNT1.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            });
         }
     }
 }

@@ -4,6 +4,7 @@ using Libreria_PNT1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Libreria_PNT1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251114112914_Add_Categoria")]
+    partial class Add_Categoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,90 +53,6 @@ namespace Libreria_PNT1.Migrations
                             IdCategoria = 2,
                             Nombre = "No Ficción"
                         });
-                });
-
-            modelBuilder.Entity("Libreria_PNT1.Models.ClienteEntity", b =>
-                {
-                    b.Property<int>("IdCliente")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCliente"));
-
-                    b.Property<string>("Direccion")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Telefono")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("IdCliente");
-
-                    b.ToTable("Clientes");
-                });
-
-            modelBuilder.Entity("Libreria_PNT1.Models.HistorialPedidoEntity", b =>
-                {
-                    b.Property<int>("IdPedido")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPedido"));
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.HasKey("IdPedido");
-
-                    b.HasIndex("IdCliente");
-
-                    b.ToTable("HistorialPedidos");
-                });
-
-            modelBuilder.Entity("Libreria_PNT1.Models.ItemPedidoEntity", b =>
-                {
-                    b.Property<int>("IdItemPedido")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdItemPedido"));
-
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdLibro")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdPedido")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("PrecioUnitario")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.HasKey("IdItemPedido");
-
-                    b.HasIndex("IdLibro");
-
-                    b.HasIndex("IdPedido");
-
-                    b.ToTable("ItemsPedido");
                 });
 
             modelBuilder.Entity("Libreria_PNT1.Models.LibroEntity", b =>
@@ -201,36 +120,6 @@ namespace Libreria_PNT1.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Libreria_PNT1.Models.HistorialPedidoEntity", b =>
-                {
-                    b.HasOne("Libreria_PNT1.Models.ClienteEntity", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("IdCliente")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-                });
-
-            modelBuilder.Entity("Libreria_PNT1.Models.ItemPedidoEntity", b =>
-                {
-                    b.HasOne("Libreria_PNT1.Models.LibroEntity", "Libro")
-                        .WithMany()
-                        .HasForeignKey("IdLibro")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Libreria_PNT1.Models.HistorialPedidoEntity", "Pedido")
-                        .WithMany("Items")
-                        .HasForeignKey("IdPedido")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Libro");
-
-                    b.Navigation("Pedido");
-                });
-
             modelBuilder.Entity("Libreria_PNT1.Models.LibroEntity", b =>
                 {
                     b.HasOne("Libreria_PNT1.Models.CategoriaEntity", "Categoria")
@@ -243,11 +132,6 @@ namespace Libreria_PNT1.Migrations
             modelBuilder.Entity("Libreria_PNT1.Models.CategoriaEntity", b =>
                 {
                     b.Navigation("Libros");
-                });
-
-            modelBuilder.Entity("Libreria_PNT1.Models.HistorialPedidoEntity", b =>
-                {
-                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

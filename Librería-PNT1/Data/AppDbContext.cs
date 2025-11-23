@@ -14,6 +14,8 @@ namespace Libreria_PNT1.Data
         public DbSet<HistorialPedidoEntity> HistorialPedidos { get; set; }
         public DbSet<ItemPedidoEntity> ItemsPedido { get; set; }
 
+        public DbSet<CategoriaEntity> Categorias { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -28,10 +28,11 @@ namespace Libreria_PNT1.Models
 
         public bool Disponible { get; set; } = true;
 
-        public int? CategoriaId { get; set; }
-        public Categoria? Categoria { get; set; }
+        //public int? CategoriaId { get; set; }
+        //Categoria? Categoria { get; set; }
 
-        
+        public int? CategoriaId { get; set; }
+        public CategoriaEntity? Categoria { get; set; }
 
         public LibroEntity() { }
 

@@ -1,4 +1,11 @@
-﻿@{
+﻿@if (!string.IsNullOrWhiteSpace(ViewBag.CheckoutMessage))
+{
+    <div class="alert alert-success">
+        @ViewBag.CheckoutMessage
+    </div>
+}
+
+@{
     ViewData["Title"] = "Inicio";
 }
 <section class="py-4">
@@ -10,23 +17,24 @@
         </div>
     </div>
 
-    <h2 class="h5 mb-3">Novedades</h2>
-    <div class="row g-3">
-        @for (int i = 0; i < 6; i++)
+    <h2>Novedades</h2>
+
+    <div class="row">
+        @foreach (var libro in Model)
         {
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card book-card h-100">
-                    <img src="~/img/placeholder-book.jpg" class="card-img-top" alt="Libro">
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
                     <div class="card-body">
-                        <h3 class="card-title h6">Título de Libro</h3>
-                        <p class="text-muted small">Autor/a</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="price">$ 12.345</span>
-                            <button class="btn btn-sm btn-primary add-to-cart"
-                                    data-product-id="1" data-title="Libro demo" data-price="12345">
-                                Agregar
-                            </button>
-                        </div>
+                        <h5 class="card-title">@libro.Titulo</h5>
+                        <p class="card-text">Autor: @libro.Autor</p>
+                        <p class="card-text fw-bold">$ @libro.Precio</p>
+
+                        <a asp-controller="Products"
+                           asp-action="Details"
+                           asp-route-id="@libro.IdLibro"
+                           class="btn btn-primary btn-sm">
+                            Ver
+                        </a>
                     </div>
                 </div>
             </div>

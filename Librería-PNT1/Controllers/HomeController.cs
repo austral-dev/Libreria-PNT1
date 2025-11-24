@@ -31,7 +31,7 @@ namespace Libreria_PNT1.Controllers
             return View(novedades);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Nosotros()
         {
             return View();
         }

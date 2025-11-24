@@ -1,26 +1,117 @@
 :root {
-    --brand: #0b3d91;
+    --bg-paper: #fcfaf5;
+    --text-main: #2d2a26;
+    --primary: #a65e3a;
+    --primary-dark: #8a4a2b;
+    --secondary: #4a403a;
+    --accent: #d99e32;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+body {
+    background-color: var(--bg-paper);
+    color: var(--text-main);
+    font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-heading);
+    color: var(--secondary);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+    a:hover {
+        color: var(--primary-dark);
+    }
+
+.navbar {
+    background-color: var(--bg-paper) !important;
+    border-bottom: 1px solid #e5e0d8;
+    padding: 1rem 0;
+    box-shadow: none;
 }
 
 .navbar-brand {
-    letter-spacing: .5px;
-}
-
-.card-title {
-    font-weight: 600;
-}
-
-.price {
+    font-family: var(--font-heading);
     font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--secondary) !important;
 }
 
-.book-card img {
-    object-fit: cover;
-    height: 220px;
-    width: 100%;
+.form-control {
+    border-radius: 20px;
+    border: 1px solid #dcd6ce;
+    padding-left: 1.2rem;
+    background-color: #ffffff;
 }
 
-#cart-count {
-    font-size: .75rem;
-    min-width: 1.25rem;
+.btn-outline-secondary {
+    border-radius: 20px;
+    border-color: #dcd6ce;
+    color: var(--secondary);
 }
+
+.hero-banner {
+    background: linear-gradient(135deg, var(--secondary) 0%, #5c504a 100%);
+    color: #ffffff;
+    padding: 5rem 3rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+    box-shadow: 0 15px 30px rgba(74, 64, 58, 0.15);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+    .hero-banner h1 {
+        color: #ffffff !important;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-banner p {
+        font-size: 1.2rem;
+        color: #e0dbd5;
+        margin-bottom: 2rem;
+    }
+
+    .hero-banner .btn-light {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        font-weight: bold;
+        border-radius: 30px;
+    }
+
+        .hero-banner .btn-light:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+.card {
+    border: none;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(166, 94, 58, 0.15);
+    }
+
+.card-header {
+    background-color: transparent;
+    border-bottom: none;
+    padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+.card-body {
+    padding: 1rem 1.5rem 1.5rem 1.

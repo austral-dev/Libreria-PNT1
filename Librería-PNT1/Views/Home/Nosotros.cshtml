@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Nosotros";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 mb-3">La historia de Hojas de Otoño</h1>
+        <p class="lead text-muted" style="font-family: var(--font-heading); font-style: italic;">
+            "Un proyecto nacido de la pasión por los libros y el código."
+        </p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm mb-5">
+                <div class="card-body p-5">
+                    <h2 class="mb-4" style="color: var(--primary);">Nuestra Misión</h2>
+                    <p class="card-text">
+                        Bienvenidos a <strong>Hojas de Otoño</strong>. Somos una librería online independiente creada con el objetivo de conectar a los lectores con esas historias que dejan huella.
+                    </p>
+                    <p class="card-text">
+                        Creemos que comprar un libro no debería ser un trámite, sino el comienzo de una experiencia. Por eso, seleccionamos cuidadosamente nuestro catálogo, desde los clásicos inmortales hasta las voces más nuevas de la literatura contemporánea.
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-3" style="background-color: #e9ecef; border-left: 5px solid var(--secondary);">
+                <h3 class="h5 mb-3">🚧 Proyecto en Crecimiento</h3>
+                <p class="mb-0">
+                    Actualmente estamos en nuestra <strong>fase inicial (Beta)</strong>. Este sitio es el resultado de un arduo trabajo de desarrollo en tecnología .NET.
+                </p>
+                <p class="mt-2">
+                    Estamos trabajando día a día para mejorar la experiencia de usuario, agregar más títulos y optimizar nuestros envíos. ¡Gracias por ser parte de nuestros primeros pasos!
+                </p>
+            </div>
+
+            <div class="text-center mt-5">
+                <p>¿Tenés alguna sugerencia o no encontrás lo que buscás?</p>
+                <a asp-controller="Contact" asp-action="Index" class="btn btn-outline-primary">
+                    Escribinos
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

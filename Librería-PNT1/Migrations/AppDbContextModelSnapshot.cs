@@ -197,8 +197,9 @@ namespace Libreria_PNT1.Migrations
                             IdLibro = 1,
                             Autor = "Cervantes",
                             CategoriaId = 1,
-                            Descripcion = "Clásico",
+                            Descripcion = "Clásico de la literatura.",
                             Disponible = true,
+                            Imagen = "EL QUIJOTE.jpg",
                             Precio = 19999.99m,
                             Stock = 5,
                             Titulo = "El Quijote"
@@ -208,8 +209,9 @@ namespace Libreria_PNT1.Migrations
                             IdLibro = 2,
                             Autor = "Isaac Asimov",
                             CategoriaId = 1,
-                            Descripcion = "Sci-Fi",
+                            Descripcion = "Obra maestra de Sci-Fi.",
                             Disponible = true,
+                            Imagen = "FUNDACION.jpg",
                             Precio = 15999.00m,
                             Stock = 3,
                             Titulo = "Fundación"
@@ -219,8 +221,9 @@ namespace Libreria_PNT1.Migrations
                             IdLibro = 3,
                             Autor = "JK Rowling",
                             CategoriaId = 1,
-                            Descripcion = "Fantasia",
+                            Descripcion = "El inicio de la saga.",
                             Disponible = true,
+                            Imagen = "HARRY POTTER 1.jpg",
                             Precio = 20000.00m,
                             Stock = 7,
                             Titulo = "Harry Potter y la Piedra Filosofal"
@@ -230,19 +233,21 @@ namespace Libreria_PNT1.Migrations
                             IdLibro = 4,
                             Autor = "JK Rowling",
                             CategoriaId = 1,
-                            Descripcion = "Fantasia",
+                            Descripcion = "Segundo año en Hogwarts.",
                             Disponible = true,
+                            Imagen = "HARRY POTTER 2.jpg",
                             Precio = 20000.00m,
                             Stock = 7,
-                            Titulo = "Harry Potter y la Camara Secreta"
+                            Titulo = "Harry Potter y la Cámara Secreta"
                         },
                         new
                         {
                             IdLibro = 5,
                             Autor = "JK Rowling",
                             CategoriaId = 1,
-                            Descripcion = "Fantasia",
+                            Descripcion = "Tercer año en Hogwarts.",
                             Disponible = true,
+                            Imagen = "HARRY POTTER 3.jpg",
                             Precio = 20000.00m,
                             Stock = 7,
                             Titulo = "Harry Potter y el Prisionero de Azkaban"
@@ -252,8 +257,9 @@ namespace Libreria_PNT1.Migrations
                             IdLibro = 6,
                             Autor = "JK Rowling",
                             CategoriaId = 1,
-                            Descripcion = "Fantasia",
+                            Descripcion = "El torneo de los tres magos.",
                             Disponible = true,
+                            Imagen = "HARRY POTTER 4.jpg",
                             Precio = 20000.00m,
                             Stock = 7,
                             Titulo = "Harry Potter y el Caliz de Fuego"
@@ -263,8 +269,9 @@ namespace Libreria_PNT1.Migrations
                             IdLibro = 7,
                             Autor = "JK Rowling",
                             CategoriaId = 1,
-                            Descripcion = "Fantasia",
+                            Descripcion = "La rebelión comienza.",
                             Disponible = true,
+                            Imagen = "HARRY POTTER 5.jpg",
                             Precio = 20000.00m,
                             Stock = 7,
                             Titulo = "Harry Potter y la Orden del Fenix"
@@ -274,8 +281,9 @@ namespace Libreria_PNT1.Migrations
                             IdLibro = 8,
                             Autor = "JK Rowling",
                             CategoriaId = 1,
-                            Descripcion = "Fantasia",
+                            Descripcion = "Secretos oscuros revelados.",
                             Disponible = true,
+                            Imagen = "HARRY POTTER 6.jpg",
                             Precio = 20000.00m,
                             Stock = 7,
                             Titulo = "Harry Potter y el Misterio del Principe"
@@ -285,8 +293,9 @@ namespace Libreria_PNT1.Migrations
                             IdLibro = 9,
                             Autor = "JK Rowling",
                             CategoriaId = 1,
-                            Descripcion = "Fantasia",
+                            Descripcion = "El final épico.",
                             Disponible = true,
+                            Imagen = "HARRY POTTER 7.jpg",
                             Precio = 20000.00m,
                             Stock = 7,
                             Titulo = "Harry Potter y las Reliquias de la Muerte"
@@ -296,11 +305,24 @@ namespace Libreria_PNT1.Migrations
                             IdLibro = 10,
                             Autor = "Stephenie Meyer",
                             CategoriaId = 1,
-                            Descripcion = "Fantasia",
+                            Descripcion = "Romance y vampiros.",
                             Disponible = true,
-                            Precio = 12999.00m,
+                            Imagen = "CREPUSCULO.jpg",
+                            Precio = 39999.00m,
                             Stock = 10,
                             Titulo = "Crepusculo"
+                        },
+                        new
+                        {
+                            IdLibro = 13,
+                            Autor = "George Orwell",
+                            CategoriaId = 1,
+                            Descripcion = "Ciencia Ficción distópica.",
+                            Disponible = true,
+                            Imagen = "1984.jpg",
+                            Precio = 20000.00m,
+                            Stock = 15,
+                            Titulo = "1984"
                         });
                 });
 

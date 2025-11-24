@@ -43,8 +43,6 @@ namespace Libreria_PNT1.Repositories
                 libro.Disponible = entity.Disponible;
                 libro.CategoriaId = entity.CategoriaId;
                 libro.CategoriaNombre = entity.Categoria?.Nombre;
-
-                // 👉 IMPORTANTE: asignar la imagen desde la base
                 libro.Imagen = entity.Imagen;
 
                 return libro;
@@ -75,8 +73,6 @@ namespace Libreria_PNT1.Repositories
             libro.Disponible = entity.Disponible;
             libro.CategoriaId = entity.CategoriaId;
             libro.CategoriaNombre = entity.Categoria?.Nombre;
-
-            // 👉 IMPORTANTE
             libro.Imagen = entity.Imagen;
 
             return libro;

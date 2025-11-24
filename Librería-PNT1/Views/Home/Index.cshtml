@@ -26,28 +26,32 @@
     <div class="row">
         @foreach (var libro in Model)
         {
-            // Si no tiene imagen en BD, usamos FUNDACION.jpg como fallback
-            var imagen = string.IsNullOrEmpty(libro.Imagen)
-            ? "FUNDACION.jpg"
-            : libro.Imagen;
+            // Lógica de imagen: Si viene vacía, usamos una por defecto (asegurate que exista)
+            var imagenNombre = string.IsNullOrEmpty(libro.Imagen) ? "FUNDACION.jpg" : libro.Imagen;
 
             <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <img src="@Url.Content("~/img/" + imagen)"
-                             class="img-fluid mb-2 rounded"
-                             style="height:180px; object-fit:cover; width:100%;" />
+                <div class="card h-100 shadow-sm book-card">
 
-                        <h5 class="card-title">@libro.Titulo</h5>
-                        <p class="card-text">Autor: @libro.Autor</p>
-                        <p class="card-text fw-bold">$ @libro.Precio</p>
+                    <img src="~/img/@imagenNombre"
+                         class="card-img-top"
+                         alt="@libro.Titulo"
+                         asp-append-version="true"
+                         style="height: 280px; object-fit: cover; width: 100%;">
 
-                        <a asp-controller="Products"
-                           asp-action="Details"
-                           asp-route-id="@libro.IdLibro"
-                           class="btn btn-primary btn-sm">
-                            Ver
-                        </a>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-truncate" title="@libro.Titulo">@libro.Titulo</h5>
+                        <p class="card-subtitle mb-2 text-muted">@libro.Autor</p>
+
+                        <div class="mt-auto">
+                            <p class="price-tag mb-2">$@libro.Precio</p>
+
+                            <a asp-controller="Products"
+                               asp-action="Details"
+                               asp-route-id="@libro.IdLibro"
+                               class="btn btn-primary w-100">
+                                Ver Detalle
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

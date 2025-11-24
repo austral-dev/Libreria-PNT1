@@ -17,6 +17,9 @@ namespace Libreria_PNT1.Models   // <-- IMPORTANTE: igual que en las otras clase
         public int Stock { get; set; }
         public bool Disponible { get; set; }
 
+        //  NUEVA PROPIEDAD IMAGENES
+        public string? Imagen { get; set; }
+
         // FK y navegación
         public int? CategoriaId { get; set; }
         public string? CategoriaNombre { get; set; }
@@ -38,7 +41,6 @@ namespace Libreria_PNT1.Models   // <-- IMPORTANTE: igual que en las otras clase
         }
 
         public bool EstaEnStock() => Stock > 0;
-
         public void SetDisponible(bool estado) => Disponible = estado;
     }
 }

@@ -12,15 +12,19 @@ namespace Libreria_PNT1.Repositories
     public class LibroRepository : ILibroRepository
     {
         private readonly AppDbContext _context;
+
         public LibroRepository(AppDbContext context)
         {
             _context = context;
         }
 
+        // ======================================================
+        // GET ALL
+        // ======================================================
         public async Task<IEnumerable<Libro>> GetAllAsync()
         {
             var entities = await _context.Libros
-                                         .Include(l => l.Categoria) // para leer el nombre
+                                         .Include(l => l.Categoria)
                                          .AsNoTracking()
                                          .ToListAsync();
 
@@ -33,18 +37,23 @@ namespace Libreria_PNT1.Repositories
                     entity.Descripcion ?? string.Empty,
                     (double)entity.Precio,
                     entity.Stock,
-                    Categoria.NOVELA      // usamos un valor por defecto para el enum
+                    Categoria.NOVELA
                 );
 
-                // Campos que agregaste para FK / UI
                 libro.Disponible = entity.Disponible;
                 libro.CategoriaId = entity.CategoriaId;
                 libro.CategoriaNombre = entity.Categoria?.Nombre;
+
+                // 👉 IMPORTANTE: asignar la imagen desde la base
+                libro.Imagen = entity.Imagen;
 
                 return libro;
             });
         }
 
+        // ======================================================
+        // GET BY ID
+        // ======================================================
         public async Task<Libro?> GetByIdAsync(int id)
         {
             var entity = await _context.Libros
@@ -67,9 +76,15 @@ namespace Libreria_PNT1.Repositories
             libro.CategoriaId = entity.CategoriaId;
             libro.CategoriaNombre = entity.Categoria?.Nombre;
 
+            // 👉 IMPORTANTE
+            libro.Imagen = entity.Imagen;
+
             return libro;
         }
 
+        // ======================================================
+        // ADD
+        // ======================================================
         public async Task AddAsync(Libro entity)
         {
             var libroEntity = new LibroEntity
@@ -81,20 +96,22 @@ namespace Libreria_PNT1.Repositories
                 Precio = (decimal)entity.Precio,
                 Stock = entity.Stock,
                 Disponible = entity.Disponible,
+                CategoriaId = entity.CategoriaId,
 
-                // ⚠️ Ahora solo trabajamos con FK, no con CategoriaEntity directa
-                CategoriaId = entity.CategoriaId
+                // 👉 IMPORTANTE
+                Imagen = entity.Imagen
             };
 
             await _context.Libros.AddAsync(libroEntity);
         }
 
+        // ======================================================
+        // UPDATE
+        // ======================================================
         public Task UpdateAsync(Libro entity)
         {
             if (!int.TryParse(entity.IdLibro, out var id))
-            {
                 throw new ArgumentException("El IdLibro no es un número válido.");
-            }
 
             var libroEntity = new LibroEntity
             {
@@ -105,27 +122,37 @@ namespace Libreria_PNT1.Repositories
                 Precio = (decimal)entity.Precio,
                 Stock = entity.Stock,
                 Disponible = entity.Disponible,
-                CategoriaId = entity.CategoriaId
+                CategoriaId = entity.CategoriaId,
+
+                // 👉 IMPORTANTE
+                Imagen = entity.Imagen
             };
 
             _context.Libros.Update(libroEntity);
             return Task.CompletedTask;
         }
 
+        // ======================================================
+        // DELETE
+        // ======================================================
         public async Task DeleteAsync(int id)
         {
             var libroEntity = await _context.Libros.FirstOrDefaultAsync(l => l.IdLibro == id);
             if (libroEntity != null)
-            {
                 _context.Libros.Remove(libroEntity);
-            }
         }
 
+        // ======================================================
+        // EXISTS
+        // ======================================================
         public async Task<bool> ExistsAsync(int id)
         {
             return await _context.Libros.AnyAsync(l => l.IdLibro == id);
         }
 
+        // ======================================================
+        // SAVE CHANGES
+        // ======================================================
         public Task<int> SaveChangesAsync()
         {
             return _context.SaveChangesAsync();

@@ -1,4 +1,6 @@
-﻿@if (!string.IsNullOrWhiteSpace(ViewBag.CheckoutMessage))
+﻿@model IEnumerable<Libreria_PNT1.Models.Libro>
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.CheckoutMessage))
 {
     <div class="alert alert-success">
         @ViewBag.CheckoutMessage
@@ -8,6 +10,7 @@
 @{
     ViewData["Title"] = "Inicio";
 }
+
 <section class="py-4">
     <div class="hero-banner">
         <h1>Tu librería online</h1>
@@ -23,9 +26,18 @@
     <div class="row">
         @foreach (var libro in Model)
         {
+            // Si no tiene imagen en BD, usamos FUNDACION.jpg como fallback
+            var imagen = string.IsNullOrEmpty(libro.Imagen)
+            ? "FUNDACION.jpg"
+            : libro.Imagen;
+
             <div class="col-md-3 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
+                        <img src="@Url.Content("~/img/" + imagen)"
+                             class="img-fluid mb-2 rounded"
+                             style="height:180px; object-fit:cover; width:100%;" />
+
                         <h5 class="card-title">@libro.Titulo</h5>
                         <p class="card-text">Autor: @libro.Autor</p>
                         <p class="card-text fw-bold">$ @libro.Precio</p>

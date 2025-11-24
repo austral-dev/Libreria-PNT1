@@ -1,26 +1,28 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Libreria_PNT1.Models   // <-- IMPORTANTE: igual que en las otras clases
+namespace Libreria_PNT1.Models
 {
     public class Libro
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string IdLibro { get; set; } = string.Empty;
+        public string IdLibro { get; set; } = string.Empty;  // <- volvemos a string
 
         public string Titulo { get; set; } = string.Empty;
         public string Autor { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
+
+        // podés dejar double si ya está usado así en todos lados
         public double Precio { get; set; }
+
         public int Stock { get; set; }
         public bool Disponible { get; set; }
 
-        //  NUEVA PROPIEDAD IMAGENES
+        // NUEVA propiedad para la portada
         public string? Imagen { get; set; }
 
-        // FK y navegación
+        // FK / Navegación
         public int? CategoriaId { get; set; }
         public string? CategoriaNombre { get; set; }
         public Categoria Categoria { get; set; }

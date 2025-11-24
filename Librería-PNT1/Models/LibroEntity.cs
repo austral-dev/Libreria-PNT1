@@ -34,6 +34,9 @@ namespace Libreria_PNT1.Models
         public int? CategoriaId { get; set; }
         public CategoriaEntity? Categoria { get; set; }
 
+        // NUEVO → Nombre del archivo de imagen
+        public string? Imagen { get; set; }
+
         public LibroEntity() { }
 
         public bool EstaEnStock() => Stock > 0;

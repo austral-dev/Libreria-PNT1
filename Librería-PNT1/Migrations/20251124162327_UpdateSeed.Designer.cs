@@ -4,6 +4,7 @@ using Libreria_PNT1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Libreria_PNT1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251124162327_UpdateSeed")]
+    partial class UpdateSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,7 +224,7 @@ namespace Libreria_PNT1.Migrations
                             CategoriaId = 1,
                             Descripcion = "Fantasia",
                             Disponible = true,
-                            Precio = 20000.00m,
+                            Precio = 16999.00m,
                             Stock = 7,
                             Titulo = "Harry Potter y la Piedra Filosofal"
                         },
@@ -232,7 +235,7 @@ namespace Libreria_PNT1.Migrations
                             CategoriaId = 1,
                             Descripcion = "Fantasia",
                             Disponible = true,
-                            Precio = 20000.00m,
+                            Precio = 16999.00m,
                             Stock = 7,
                             Titulo = "Harry Potter y la Camara Secreta"
                         },
@@ -243,7 +246,7 @@ namespace Libreria_PNT1.Migrations
                             CategoriaId = 1,
                             Descripcion = "Fantasia",
                             Disponible = true,
-                            Precio = 20000.00m,
+                            Precio = 16999.00m,
                             Stock = 7,
                             Titulo = "Harry Potter y el Prisionero de Azkaban"
                         },
@@ -254,53 +257,9 @@ namespace Libreria_PNT1.Migrations
                             CategoriaId = 1,
                             Descripcion = "Fantasia",
                             Disponible = true,
-                            Precio = 20000.00m,
+                            Precio = 16999.00m,
                             Stock = 7,
                             Titulo = "Harry Potter y el Caliz de Fuego"
-                        },
-                        new
-                        {
-                            IdLibro = 7,
-                            Autor = "JK Rowling",
-                            CategoriaId = 1,
-                            Descripcion = "Fantasia",
-                            Disponible = true,
-                            Precio = 20000.00m,
-                            Stock = 7,
-                            Titulo = "Harry Potter y la Orden del Fenix"
-                        },
-                        new
-                        {
-                            IdLibro = 8,
-                            Autor = "JK Rowling",
-                            CategoriaId = 1,
-                            Descripcion = "Fantasia",
-                            Disponible = true,
-                            Precio = 20000.00m,
-                            Stock = 7,
-                            Titulo = "Harry Potter y el Misterio del Principe"
-                        },
-                        new
-                        {
-                            IdLibro = 9,
-                            Autor = "JK Rowling",
-                            CategoriaId = 1,
-                            Descripcion = "Fantasia",
-                            Disponible = true,
-                            Precio = 20000.00m,
-                            Stock = 7,
-                            Titulo = "Harry Potter y las Reliquias de la Muerte"
-                        },
-                        new
-                        {
-                            IdLibro = 10,
-                            Autor = "Stephenie Meyer",
-                            CategoriaId = 1,
-                            Descripcion = "Fantasia",
-                            Disponible = true,
-                            Precio = 12999.00m,
-                            Stock = 10,
-                            Titulo = "Crepusculo"
                         });
                 });
 
